@@ -10,10 +10,5 @@ socket.on('disconnect', function () {
 });
 
 socket.on('newMessage', function (message) {
-  console.log(message);
-
-  socket.emit('createMessage', {
-    from: 'charlie@example.com',
-    text: 'hello my god server'
-  });
+  console.log('newMessage', message);
 });

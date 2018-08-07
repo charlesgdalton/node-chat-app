@@ -25,9 +25,24 @@ class Users {
     if(user) {
       this.users = this.users.filter((user) => user.id !== id);
     }
-    
+
     return user;
   }
+  isUser(room, name) {
+    let thisRoom = this.getUserList(room.toLowerCase());
+
+    console.log(thisRoom);
+
+    let anyUser = thisRoom.filter(user => user == name)[0];
+    console.log(anyUser);
+
+    if(!anyUser) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   getUser (id) {
     return this.users.filter((user => user.id === id))[0];
   }

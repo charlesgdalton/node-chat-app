@@ -24,7 +24,13 @@ io.on('connection', (socket) => {
   socket.on('join', (params, callback) => {
     if(!isRealString(params.name) || !isRealString(params.room)) {
       return callback('Name and room name are required.');
+    } else if (users.isUser(params.room, params.name)) {
+      return callback('Unique name required');
     }
+
+    let placeholder = params.room;
+
+    params.room = placeholder.toLowerCase();
 
     socket.join(params.room);
     users.removeUser(socket.id);
